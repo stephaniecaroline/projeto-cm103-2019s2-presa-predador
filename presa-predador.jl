@@ -18,9 +18,9 @@ function rungekutta4(F, t0, tf, u0, n)
         t = t+h
         T[i+1] = t
     end
-
-    plot(T,U[1,:],color="red",label="Presas")
-    plot!(T,U[2,:],color="blue",label="Predadores",xlabel="Tempo",ylabel="Pop. Presas e Predadores") 
     
-     
+    return U, T
 end
+
+plot(T,U[1,:],color="red",label="Presas")
+plot!(T,U[2,:],color="blue",label="Predadores",xlabel="Tempo",ylabel="Pop. Presas e Predadores")
