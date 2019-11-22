@@ -64,11 +64,17 @@ plot!(U3[1,:],U3[2,:],label="Condição 3")
 c = [30 ; 47.2 ; 70.2 ; 77.4 ; 36.3 ; 20.6 ; 18.1; 21.4; 22; 25.4; 27.1; 40.3; 57; 76.6; 52.3; 19.5; 11.2; 7.6; 14.6; 16.2; 24.7]
 l = [4; 6.1; 9.8; 35.2; 59.4; 41.7; 19; 13; 8.3; 9.1; 7.4; 8; 12.3; 19.5; 45.7; 51.1; 29.7; 15.8; 9.7; 10.1; 8.6]
 
+#modelo (7)
+q(t,u) = [u[1]*(0.4-0.018*u[2]) ; u[2]*(-0.8+0.023*u[1])]
+u2 = [30;4]
+U, T = rungekutta4(q,0,20,u2,300)
+
+##plotar o gráfico com o modelo ideal
+plot(T,U[1,:],color="red",label="Presas Ideal",xlabel="Tempo",ylabel="Pop. Presas e Predadores",legend=:bottomright)
+plot!(T,U[2,:],color="blue",label="Predadores Ideal")
+ylims!(-35,80)
 
 ##para plotar o gráfico com os dados da tabela juntamente com o modelo ideal
-q(t,u) = [u[1]*(0.4-0.018*u[2]) ; u[2]*(-0.8+0.023*u[1])]
-u0 = [30;4]
-U, T = rungekutta4(q,0,20,u0,300)
 plot(T,U[1,:],color="red",label="Presas Ideal",xlabel="Tempo",ylabel="Pop. Presas e Predadores",legend=:bottomright)
 plot!(T,U[2,:],color="blue",label="Predadores Ideal")
 scatter!(l, label = "Linces", c=:lightblue, ms=3)
