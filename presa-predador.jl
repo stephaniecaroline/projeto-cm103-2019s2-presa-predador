@@ -33,12 +33,13 @@ u0 = [2; 1]
 #para n = 50
     U, T = rungekutta4(f,0,50,u0,50)
     plot(T,U[1,:],color="red",label="Presas")
-    plot!(T,U[2,:],color="blue",label="Predadores",xlabel="Tempo",ylabel="Pop. Presas e Predadores")
+    plot!(T,U[2,:],color="blue",label="Predadores",xlabel="Tempo",ylabel="Pop. Presas e Predadores",legend=:bottomright)
+    ylims!(-0.5, 4)
 #para n = 100
     U, T = rungekutta4(f,0,50,u0,100)
-    ylims!(-0.5, 4)
     plot(T,U[1,:],color="red",label="Presas")
-    plot!(T,U[2,:],color="blue",label="Predadores",xlabel="Tempo",ylabel="Pop. Presas e Predadores")
+    plot!(T,U[2,:],color="blue",label="Predadores",xlabel="Tempo",ylabel="Pop. Presas e Predadores",legend=:bottomright)
+    ylims!(-0.5, 4)
 
 
 ## para plotar o grafico da população de presas e predadores em função do tempo para o modelo (6)
